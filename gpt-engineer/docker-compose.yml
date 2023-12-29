@@ -3,15 +3,17 @@ services:
 
   generate-master:
     tty: true
+    stdin_open: true
     env_file:
       - .env
     image: ghcr.io/jinyoung/gpt-engineer:v1
     volumes:
       - ../master:/project
-  generate-purchase:
-    tty: true
-    env_file:
-      - .env
-    image: ghcr.io/jinyoung/gpt-engineer:v1
-    volumes:
-      - ../purchase:/project
+  # generate-purchase:
+  #   depends_on: [generate-master]
+  #   tty: true
+  #   env_file:
+  #     - .env
+  #   image: ghcr.io/jinyoung/gpt-engineer:v1
+  #   volumes:
+  #     - ../purchase:/project
